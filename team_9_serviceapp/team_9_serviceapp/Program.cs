@@ -51,7 +51,6 @@ public class GetSocket
         // Create a socket connection with the specified server and port.
         using (Socket s = ConnectSocket(server, port))
         {
-
             if (s == null)
                 return ("Connection failed");
 
@@ -70,36 +69,28 @@ public class GetSocket
             }
             while (bytes > 0);
         }
-
+        Console.WriteLine("lmk");
         return page;
     }
 
     public static void Main(string[] args)
     {
-
-
         WebServer ws = new WebServer(SendResponse, "http://localhost:8080/test/");
         ws.Run();
         Console.WriteLine("A simple webserver. Press a key to quit.");
         Console.ReadKey();
         ws.Stop();
+        }
 
-
-        //        string result = SocketSendReceive(host, port);
-        //        Console.WriteLine(result);
-        //        Console.ReadKey();
-    }
     public static string SendResponse(HttpListenerRequest request)
     {
+        Console.WriteLine(">!>!>!");
         string host = "www.google.com";
         int port = 80;
+       // return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
 
-//        if (args.Length == 0)
-//            // If no server name is passed as argument to this program, 
-//            // use the current host name as the default.
-//            host = Dns.GetHostName();
-//        else
-//            host = args[0];
-        return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
-    }
+        string result = SocketSendReceive(host, port);
+        Console.WriteLine(result);
+        return result;
+        }
 }
