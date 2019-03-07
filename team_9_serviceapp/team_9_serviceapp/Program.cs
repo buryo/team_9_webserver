@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using SimpleWebServer;
+using System.Diagnostics;
 
 public class GetSocket
 {
@@ -14,6 +15,8 @@ public class GetSocket
 
         // Get host related information.
         hostEntry = Dns.GetHostEntry(server);
+
+        
 
         // Loop through the AddressList to obtain the supported AddressFamily. This is to avoid
         // an exception that occurs when the host IP Address is not compatible with the address family
@@ -45,7 +48,7 @@ public class GetSocket
         string request = "GET / HTTP/1.1\r\nHost: " + server +
             "\r\nConnection: Close\r\n\r\n";
         Byte[] bytesSent = Encoding.ASCII.GetBytes(request);
-        Byte[] bytesReceived = new Byte[256];
+        Byte[] bytesReceived = new Byte[1024];
         string page = "";
 
         // Create a socket connection with the specified server and port.
@@ -59,7 +62,6 @@ public class GetSocket
 
             // Receive the server home page content.
             int bytes = 0;
-            page = "Default HTML page on " + server + ":\r\n";
             
             // The following will block until the page is transmitted.
             do
@@ -69,7 +71,6 @@ public class GetSocket
             }
             while (bytes > 0);
         }
-        Console.WriteLine("lmk");
         return page;
     }
 
@@ -78,19 +79,21 @@ public class GetSocket
         WebServer ws = new WebServer(SendResponse, "http://localhost:8080/test/");
         ws.Run();
         Console.WriteLine("A simple webserver. Press a key to quit.");
+        Process.Start("http://localhost:8080/test/");
         Console.ReadKey();
         ws.Stop();
         }
 
     public static string SendResponse(HttpListenerRequest request)
     {
-        Console.WriteLine(">!>!>!");
-        string host = "www.google.com";
+        string host = "www.w3schools.com";
         int port = 80;
-       // return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
+        // return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
 
-        string result = SocketSendReceive(host, port);
-        Console.WriteLine(result);
+        string output = SocketSendReceive(host, port);
+        Console.WriteLine(output);
+        string result = output.Substring(output.IndexOf("<!doctype"));
+
         return result;
-        }
+    }
 }
