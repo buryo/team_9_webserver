@@ -86,7 +86,7 @@ public class GetSocket
 
     public static string SendResponse(HttpListenerRequest request)
     {
-        string host = "www.w3schools.com";
+        string host = "www.google.com";
         int port = 80;
         // return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
 
