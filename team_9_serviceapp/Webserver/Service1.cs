@@ -13,18 +13,17 @@ namespace Webserver
             InitializeComponent();
         }
 
+        // The start point of the application
         protected override void OnStart(string[] args)
         {
-            WebSer ws = new WebSer(SendResponse, "http://localhost:8080/test/");
+            WebSer ws = new WebSer(SendRequest, "http://localhost:8080/test/");
             ws.Run();
         }
 
-        protected override void OnStop()
+        // Method to send request
+        public static string SendRequest(HttpListenerRequest request)
         {
-        }
-
-        public static string SendResponse(HttpListenerRequest request)
-        {
+            // Change the URL to visit other websites
             string url = "https://github.com/buryo";
 
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);

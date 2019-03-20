@@ -42,8 +42,9 @@ namespace Webserver
                 Console.WriteLine("Webserver running...");
                 try
                 {
-                    while (_listener.IsListening)
+                    while (_listener.IsListening) // Do while listener is listening
                     {
+                        // Queues a method for execution. The method executes when a thread pool thread becomes available.
                         ThreadPool.QueueUserWorkItem((c) =>
                         {
                             var ctx = c as HttpListenerContext;
@@ -67,6 +68,7 @@ namespace Webserver
             });
         }
 
+        // Method to stop listening
         public void Stop()
         {
             _listener.Stop();
