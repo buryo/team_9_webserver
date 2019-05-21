@@ -1,11 +1,11 @@
 # team_9_webserver
 
-# Een opdracht vanuit Windesheim Flevoland
+# Een groepsopdracht vanuit Windesheim Flevoland
 
 ### De applicatie kan:
-• Het HTTP 1.1 protocol afhandelen.
-• Het protocol mag niet breken met de standaard omschreven in de laatste HTTP RFC.
-• De webserver moet meerdere pagina’s laten zien (verzin zelf welke).
+1) Het HTTP 1.1 protocol afhandelen.
+2) Het protocol mag niet breken met de standaard omschreven in de laatste HTTP RFC.
+3) De webserver moet meerdere pagina’s laten zien (verzin zelf welke).
 
-### Gebruikte technieken
-C#
+### Gebruikte technieken en methodes
+C#, SCRUM, UML
