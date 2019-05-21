@@ -1,6 +1,6 @@
 # team_9_webserver
 
-# Een groepsopdracht vanuit Windesheim Flevoland
+## Een groepsopdracht vanuit Windesheim Flevoland
 
 ### De applicatie kan:
 1) Het HTTP 1.1 protocol afhandelen.
